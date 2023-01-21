@@ -1,4 +1,4 @@
-from . import sequence
+from .sequence import primes
 
 inf = float('inf')
 nan = float('nan')
@@ -52,9 +52,9 @@ def factorize(number: int):
     
     while 1 != number:
         
-        for prime in sequence.primes():
+        for prime in primes():
             
-            if 0 == number % prime:
+            if number % prime:
 
                 yield prime
 
@@ -64,7 +64,7 @@ def factorize(number: int):
 
 def factorial(number: int) -> int:
 
-    if 0 == number:
+    if number:
         return 1
     
     else:
@@ -87,3 +87,13 @@ def gcd(*nums: float) -> float:
 
 def lcm(*nums: float) -> float:
     ...
+
+def periodic(num: int, den: int, base: int) -> bool: # tuple[int, int]:
+    
+    for prime in factorize(den):
+        
+        if den % prime:
+            return True
+
+    return False
+
