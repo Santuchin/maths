@@ -1,4 +1,3 @@
-# TODO: encode_int, decode_int, periodic, encode_rational, decode_rational
 
 BINARY = '01'
 DECIMAL = '0123456789'
@@ -66,4 +65,16 @@ def decode_void(number: str | bytes, symbols: str | bytes, /) -> int:
    
     else:
         return 1 + symbols.index(number[0]) + decode_void(number[1:], symbols) * len(symbols)
+
+def length_void(number: int, base: int) -> int:
+    ...
+
+def encode_float(number: float, symbols: str | bytes, sep: str | bytes, per: str | bytes) -> str | bytes:
+    ...
+
+def encode_float(number: float, symbols: str | bytes, sep: str | bytes, per: str | bytes) -> str | bytes:
+    ...
+
+def length_float(number: float, base: int, sep: int, per: int) -> int:
+    ...
 
