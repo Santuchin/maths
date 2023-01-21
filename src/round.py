@@ -24,3 +24,4 @@ def round(number: float, mul: float=1, half: bool=False) -> float:
 
 def builtin(number: float, digits: int=0) -> None:
     return round(number, 10 ** -digits, True)
+

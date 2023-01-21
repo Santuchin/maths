@@ -11,23 +11,8 @@ else:
 
 del builtin_module_names
 
-
-def decode(number: bytes) -> int:
-
-    if 1 == len(number):
-        return number[0]
-    
-    else:
-        return decode(number[:-1]) * 256 + number[-1]
-
-def length(number: int, base: int) -> int:
-
-    if base > number:
-        return 1
-
-    else:
-        return 1 + length(number // base, base)
-
+from .base import decode, length, BYTES
+from .round import round_raw
 
 def bool() -> bool:
     return 0 == bytes(1)[0] % 2
@@ -35,14 +20,11 @@ def bool() -> bool:
 def until(max: int, /) -> int:
 
     log = length(max, 256)
-
-    psb = 256 ** log
-
-    div = psb - psb % max
+    div = round_raw(256 ** log, max)
 
     while True:
         
-        number = decode(bytes(log))
+        number = decode(bytes(log), BYTES)
         
         if number < div:
             return number % max
